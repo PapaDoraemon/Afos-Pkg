@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ACE Autocompletion demo</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    #editor { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+</head>
+<body>
+<pre id="editor">f1cfd67cb842f157f5ee88b38357f28003a4ad1964ab641ffc108077d8e1fc239cc74b432c17723cd1fd46fafb5bf04c68de72f4904e18c116ae143f60007531</pre>
+
+<!-- load ace -->
+<script src="file:///android_asset/src-noconflict/ace.js"></script>
+<!-- load ace language tools -->
+<script src="file:///android_asset/src-noconflict/ext-language_tools.js"></script>
+<script>
+    // trigger extension
+    ace.require("ace/ext/language_tools");
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/c_cpp");
+    editor.setShowPrintMargin(false);
+    editor.getSession().setUseWrapMode(true);
+    var code = editor.getValue();
+    //editor.setValue("new code " + code);
+    //enable autocompletion and snippets
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+</script>
+</body>
+</html>
